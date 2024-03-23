@@ -15,7 +15,7 @@ async def broadcast_function(bot, message):
     failed =0
     success = 0
     start_time = time.time()
-    async for user in users:
+    for user in users:
         user_id = int(user['id'])
         try:
             await b_msg.copy(chat_id=user_id)
@@ -54,7 +54,7 @@ async def group_broadcast(bot, message):
     failed =0
     success = 0
     start_time = time.time()
-    async for chat in chats:
+    for chat in chats:
         chat_id = int(chat['id'])
         try:
             await b_msg.copy(chat_id)
