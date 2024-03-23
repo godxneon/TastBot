@@ -7,18 +7,18 @@ logging.getLogger().setLevel(logging.INFO)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("imdbpy").setLevel(logging.ERROR)
 
-
 from pyrogram import Client, __version__, filters
 from pyrogram.raw.all import layer
-from database.ia_filterdb import Media
+from database.ia_filterdb import Media, Media2, choose_mediaDB, db as clientDB
 from database.users_chats_db import db
-from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CHANNEL, PORT
+from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CHANNEL, SECONDDB_URI, PORT
 from utils import temp
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
 from Script import script 
 from datetime import date, datetime 
 import pytz
+from sample_info import tempDict
 from aiohttp import web
 from plugins import web_server
 
@@ -30,9 +30,9 @@ class Bot(Client):
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
-            workers=150,
+            workers=200,
             plugins={"root": "plugins"},
-            sleep_threshold=5,
+            sleep_threshold=10,
         )
 
     async def start(self):
