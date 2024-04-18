@@ -203,10 +203,7 @@ async def language_check(bot, query):
              InlineKeyboardButton("❗️ ʟᴀɴɢᴜᴀɢᴇs ❗️", callback_data=f"select_lang#{userid}")
          ])
                  
-        if offset != "":
-        key = f"{message.chat.id}-{message.id}"
-        BUTTONS[key] = search
-        req = message.from_user.id if message.from_user else 0
+        if offset != "":        
         btn.append(
             [InlineKeyboardButton("ᴘᴀɢᴇ", callback_data="pages"),
              InlineKeyboardButton(text=f"1 - {math.ceil(int(total_results) / 10)}", callback_data="pages"),
