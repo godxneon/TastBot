@@ -995,11 +995,6 @@ async def auto_filter(client, msg, spoll=False):
             InlineKeyboardButton(f"⌗ Iɴꜰᴏ", "reqinfo")       
         ]  
     )
-    btn.insert(1, 
-         [
-             InlineKeyboardButton("❗️ ʟᴀɴɢᴜᴀɢᴇs ❗️", callback_data=f"select_lang#{message.from_user.id}")
-         ]
-    )
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
