@@ -117,6 +117,11 @@ async def next_page(bot, query):
             InlineKeyboardButton(f'⌗ Iɴꜰᴏ', 'reqinfo')
         ]
     )
+    btn.insert(1, 
+         [
+             InlineKeyboardButton("❗️ ʟᴀɴɢᴜᴀɢᴇs ❗️", callback_data=f"select_lang#{req}")
+         ]
+    )
 
     if 0 < offset <= 10:
         off_set = 0
