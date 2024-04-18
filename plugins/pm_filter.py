@@ -171,14 +171,8 @@ async def language_check(bot, query):
     files, offset, total_results = await get_search_results(query.message.chat.id, movie, offset=0, filter=True)
     if files:
         settings = await get_settings(query.message.chat.id)
-#        temp.SEND_ALL_TEMP[query.from_user.id] = files
-#        if 'is_shortlink' in settings.keys():
-#            ENABLE_SHORTLINK = settings['is_shortlink']
-        else:
-#            await save_group_settings(query.message.chat.id, 'is_shortlink', False)
-#            ENABLE_SHORTLINK = False
         pre = 'filep' if settings['file_secure'] else 'file'
-        elif settings['button']:
+        if settings['button']:
             btn = [
                 [
                     InlineKeyboardButton(
