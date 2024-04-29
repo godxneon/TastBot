@@ -794,22 +794,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
         users = await db.total_users_count()
         chats = await db.total_chat_count()
         #primary db
-        monsize = await db.get_db_size()
-        free = 536870912 - monsize
-        monsize = get_size(monsize)
-        free = get_size(free)
+        stats = await clientDB.command('dbStats')
+        used_dbSize = (stats['dataSize']/(1024*1024))+(stats['indexSize']/(1024*1024))
+        free_dbSize = 512-used_dbSize
         #secondary db
-        monsize = await db.get_db_size()
-        free = 536870912 - monsize
-        monsize2 = get_size(monsize)
-        free2 = get_size(free)
+        stats2 = await clientDB2.command('dbStats')
+        used_dbSize2 = (stats2['dataSize']/(1024*1024))+(stats2['indexSize']/(1024*1024))
+        free_dbSize2 = 512-used_dbSize2
         await query.message.edit_text(
-            text=script.STATUS_TXT.format((int(totalp)+int(totalsec)), users, chats, totalp, monsize, free, round(monsize, 2), round(free, 2), totalsec, round(monsize2, 2), round(free2, 2)),
+            text=script.STATUS_TXT.format((int(totalp)+int(totalsec)), users, chats, totalp, round(used_dbSize, 2), round(free_dbSize, 2), totalsec, round(used_dbSize2, 2), round(free_dbSize2, 2)),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "rfrsh":
-        await query.answer("𝙁𝙚𝙩𝙘𝙝𝙞𝙣𝙜 𝙈𝙤𝙣𝙜𝙤𝘿𝙗 𝘿𝙖𝙩𝙖𝘽𝙖𝙨𝙚🖕")
+        await query.answer("𝔽𝕖𝕥𝕔𝕙𝕚𝕟𝕘 𝕄𝕠𝕟𝕘𝕠𝔻𝔹 𝔻𝕒𝕥𝕒𝔹𝕒𝕤𝕖 🔥")
         buttons = [[
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ', callback_data='about'),
             InlineKeyboardButton('↺ ʀᴇғʀᴇsʜ', callback_data='rfrsh')
@@ -823,17 +821,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
         users = await db.total_users_count()
         chats = await db.total_chat_count()
         #primary db
-        monsize = await db.get_db_size()
-        free = 536870912 - monsize
-        monsize = get_size(monsize)
-        free = get_size(free)
+        stats = await clientDB.command('dbStats')
+        used_dbSize = (stats['dataSize']/(1024*1024))+(stats['indexSize']/(1024*1024))
+        free_dbSize = 512-used_dbSize
         #secondary db
-        monsize = await db.get_db_size()
-        free = 536870912 - monsize
-        monsize2 = get_size(monsize)
-        free2 = get_size(free)
+        stats2 = await clientDB2.command('dbStats')
+        used_dbSize2 = (stats2['dataSize']/(1024*1024))+(stats2['indexSize']/(1024*1024))
+        free_dbSize2 = 512-used_dbSize2
         await query.message.edit_text(
-            text=script.STATUS_TXT.format((int(totalp)+int(totalsec)), users, chats, totalp, monsize, free, round(monsize, 2), round(free, 2), totalsec, round(monsize, 2), round(free, 2)),
+            text=script.STATUS_TXT.format((int(totalp)+int(totalsec)), users, chats, totalp, round(used_dbSize, 2), round(free_dbSize, 2), totalsec, round(used_dbSize2, 2), round(free_dbSize2, 2)),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
