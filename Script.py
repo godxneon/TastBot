@@ -86,21 +86,21 @@ class script(object):
 • /setskip - <code>Skip no of files before indexing</code>
 • /send - <code>Send any message through bot to users. /send (username/userid) reply with message </code>"""
 
-    STATUS_TXT = """<b>Tᴏᴛᴀʟ Fɪʟᴇs Fʀᴏᴍ Bᴏᴛʜ DBs: <code>{}</code>
+    STATUS_TXT = """<b>➲ ᴛᴏᴛᴀʟ ғɪʟᴇꜱ ғᴏʀ ʙᴅ'ꜱ : <code>{}</code>
     
-Bᴏᴛ Usᴇʀs ᴀɴᴅ Cʜᴀᴛs Cᴏᴜɴᴛ
-★ Tᴏᴛᴀʟ Usᴇʀs: <code>{}</code>
-★ Tᴏᴛᴀʟ Cʜᴀᴛs: <code>{}</code>
+➲ ʙᴏᴛ ᴜꜱᴇʀꜱ ᴀɴᴅ ᴄʜᴀᴛꜱ
+┏ ᴛᴏᴛᴀʟ ᴜꜱᴇʀꜱ : <code>{}</code>
+┗ ᴛᴏᴛᴀʟ ᴄʜᴀᴛꜱ : <code>{}</code>
 
-Pʀɪᴍᴀʀʏ Dᴀᴛᴀʙᴀsᴇ Sᴛᴀᴛɪsᴛɪᴄs 
-★ Tᴏᴛᴀʟ Fɪʟᴇs: <code>{}</code>
-★ Usᴇᴅ Sᴛᴏʀᴀɢᴇ: <code>{} MB</code>
-★ Fʀᴇᴇ Sᴛᴏʀᴀɢᴇ: <code>{} MB</code>
+➲ ᴘʀɪᴍᴀʀʏ ᴅᴀᴛᴀʙᴀꜱᴇ 
+┏ ᴛᴏᴛᴀʟ ғɪʟᴇꜱ : <code>{}</code>
+┣ ᴜꜱᴇᴅ ꜱᴛᴏʀᴀɢᴇ : <code>{} MB</code>
+┗ ғʀᴇᴇ ꜱᴛᴏʀᴀɢᴇ : <code>{} MB</code>
 
-Sᴇᴄᴏɴᴅᴀʀʏ Dᴀᴛᴀʙᴀsᴇ Sᴛᴀᴛɪsᴛɪᴄs
-★ Tᴏᴛᴀʟ Fɪʟᴇs: <code>{}</code>
-★ Usᴇᴅ Sᴛᴏʀᴀɢᴇ: <code>{} MB</code>
-★ Fʀᴇᴇ Sᴛᴏʀᴀɢᴇ: <code>{} MB</code></b>"""
+➲ ꜱᴇᴄᴏɴᴅᴀʀʏ ᴅᴀᴛᴀʙᴀꜱᴇ
+┏ ᴛᴏᴛᴀʟ ғɪʟᴇꜱ : <code>{}</code>
+┣ ᴜꜱᴇᴅ ꜱᴛᴏʀᴀɢᴇ : <code>{} MB</code>
+┗ ғʀᴇᴇ ꜱᴛᴏʀᴀɢᴇ : <code>{} MB</code></b>"""
     
     LOG_TEXT_G = """#NewUser
  <b>᚛› 𝐆𝐫𝐨𝐮𝐩 ⪼ {a}(<code>{b}</code>)</b>
@@ -186,9 +186,7 @@ Name - {}"""
 ◉) OTT Or DVD Not Released..!
 ◉) Type Name With Year..!
 ◉) Check Your Correct Spelling..!
-◉) Movie Is Not Available in My Database.. Report To Admin @KLAdmin1Bot</b>```
-Don't Ask Theater Print 🥴..!```
-"""
+◉) Movie Is Not Available in My Database.. Report To Admin @KLAdmin1Bot</b>"""
 
     CUDNT_FND = """<b>➠ No Movie Found For Your Query <u>{}</u>
 
