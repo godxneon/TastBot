@@ -12,4 +12,4 @@ services:
     numInstances: 1 # optional (defaults to 1)
     healthCheckPath: /
 
-#End of yaml￼Enter
+#End of yaml
