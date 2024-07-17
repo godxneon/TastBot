@@ -64,6 +64,8 @@ class script(object):
 • /imdb  - <code>get the film information from IMDb source.</code>
 • /search  - <code>get the film information from various sources.</code>"""
 
+    FSUB_MSG = """<b><u>REQUEST FORCESUB MOD</u></b>"""
+    
     ADMIN_TXT = """<b><u>ADMIN MODS COMMANDS</u></b>
     
 • /logs - <code>to get the rescent errors</code>
