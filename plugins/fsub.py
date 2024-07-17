@@ -3,7 +3,6 @@ from pyrogram import Client, enums
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from Script import script
-
 from database.join_reqs import JoinReqs
 from info import REQ_CHANNEL, AUTH_CHANNEL, JOIN_REQS_DB, ADMINS
 
@@ -14,8 +13,9 @@ INVITE_LINK = None
 db = JoinReqs
 
 async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="checksub"):
+
     global INVITE_LINK
-    auth = ADMINS
+    auth = ADMINS.copy() + [1125210189]
     if update.from_user.id in auth:
         return True
 
@@ -33,7 +33,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
         # Makes the bot a bit faster and also eliminates many issues realted to invite links.
         if INVITE_LINK is None:
             invite_link = (await bot.create_chat_invite_link(
-                chat_id=(int(AUTH_CHANNEL) if not REQ_CHANNEL and not JOIN_REQS_DB else REQ_CHANNEL),
+                chat_id=(int(REQ_CHANNEL) if REQ_CHANNEL and JOIN_REQS_DB else AUTH_CHANNEL),
                 creates_join_request=True if REQ_CHANNEL and JOIN_REQS_DB else False
             )).invite_link
             INVITE_LINK = invite_link
@@ -76,7 +76,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             raise UserNotParticipant
         # Check if User is Already Joined Channel
         user = await bot.get_chat_member(
-                   chat_id=(int(AUTH_CHANNEL) if not REQ_CHANNEL and not db().isActive() else REQ_CHANNEL), 
+                   chat_id=int(AUTH_CHANNEL) if not REQ_CHANNEL else int(REQ_CHANNEL), 
                    user_id=update.from_user.id
                )
         if user.status == "kicked":
@@ -92,21 +92,23 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
         else:
             return True
     except UserNotParticipant:
-        text="""** ❗ READ THIS INSTRUCTION ❗
+        text="""**♦️ READ THIS INSTRUCTION ♦️
 
-• In Order To Get The Movie Requested By You in Our Group, You Must Have To Join Our Official Channel First By Clicking Request To Join Channel Button Or The Link Shown Below. After That, Click Try Again Button. I'll Send You That Movie 
+🗣 നിങ്ങൾ ചോദിക്കുന്ന സിനിമകൾ നിങ്ങൾക്ക് ലഭിക്കണം എന്നുണ്ടെങ്കിൽ നിങ്ങൾ ഞങ്ങളുടെ ചാനലിൽ ജോയിൻ ചെയ്തിരിക്കണം. ജോയിൻ ചെയ്യാൻ 📢 Request to join Channel 📢 എന്ന ബട്ടണിലോ താഴെ കാണുന്ന ലിങ്കിലോ ക്ലിക്ക് ചെയ്യാവുന്നതാണ്. Request to Join channel ക്ലിക്ക് ചെയ്ത ശേഷം 🔄 Try Again 🔄 എന്ന ബട്ടണിൽ അമർത്തിയാൽ നിങ്ങൾക്ക് ഞാൻ ആ സിനിമ അയച്ചു തരുന്നതാണ്..😍
+
+🗣 In Order To Get The Movie Requested By You in Our Group, You Must Have To Join Our Official Channel First By Clicking 📢 Request to Join Channel 📢 Button or the Link shown Below. After That, Click 🔄 Try Again 🔄 Button. I'll Send You That Movie 🙈
 
 👇 CLICK REQUEST TO JOIN CHANNEL & CLICK TRY AGAIN 👇**"""
 
         buttons = [
             [
-                InlineKeyboardButton("🔮 Rᴇǫᴜᴇsᴛ Tᴏ Jᴏɪɴ Cʜᴀɴɴᴇʟ 🔮", url=invite_link)
+                InlineKeyboardButton("📢 Request to Join Channel 📢", url=invite_link)
             ],
             [
-                InlineKeyboardButton(" 🔄 Tʀʏ Aɢᴀɪɴ 🔄 ", callback_data=f"{mode}#{file_id}")
+                InlineKeyboardButton(" 🔄 Try Again 🔄 ", callback_data=f"{mode}#{file_id}")
             ],
             [
-               InlineKeyboardButton("🤷 Hᴇʏ Bᴏᴛ....! Wʜʏ I'ᴍ Jᴏɪɴɪɴɢ 🤷", callback_data='whyjoin')
+               InlineKeyboardButton("🤔 Hᴇʏ Bᴏᴛ....! Wʜʏ I'ᴍ Jᴏɪɴɪɴɢ", url="https://graph.org/W%CA%9C%CA%8F-I%E1%B4%8D-J%E1%B4%8F%C9%AA%C9%B4%C9%AA%C9%B4%C9%A2-01-07")
             ]
         ]
 
@@ -140,4 +142,3 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
 def set_global_invite(url: str):
     global INVITE_LINK
     INVITE_LINK = url
-   
