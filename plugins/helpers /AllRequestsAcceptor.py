@@ -7,9 +7,9 @@ from pyrogram.errors import FloodWait
 
 logging.basicConfig(level=logging.ERROR)
 
-CHANNELS = [int(CHANNEL) for CHANNEL in environ.get("CHANNELS", "-1001818105181").split()]       
+CHANNELS = [int(CHANNEL) for CHANNEL in environ.get("CHANNELS", "").split()]       
 AuthChat = filters.chat(CHANNELS) if CHANNELS else (filters.group | filters.channel)         
-User     = Client(name = "AcceptUser", session_string = environ.get("SESSION", "BQCxgAEACvUhoua-hNhXl8vqleiLCZ2-hjeMfwFdH80g4Fy6wNQATb_HZ9qi22lHt3ZB0cS8v3XPXFp_147RwptntTw_Dpn65NJMFXQ8zDXUM8SEkfZWjavO7DGMysx97UfJs2sTHnFHrK1cYYGfttBvGxklUszHhPC-2DefW8A6kDmPRkVvvfGkPaTgyvY51a2Mm8FjnoDxYYt73CXR0ZoTmBhmXqDXZDZBaTg0b-Jd3zZoSxAzNtQKoyGSDju8iIujZyteSpa5buJwtcL7iloJAvBvBKoLPRcAvgcssZTfbU81S2Y3csuyOkthh1iP7z1aqTqA7j28VtLJbZCM2N8M2Sq81QAAAAFFFGinAA"))
+User     = Client(name = "AcceptUser", session_string = environ.get("SESSION")
 
 
 @User.on_message(filters.command(["run", "approve", "start"], [".", "/"]) & AuthChat)                     
