@@ -47,7 +47,7 @@ async def check_loop_sub(client, message):
     while True:
         if count == 15:
             return False
-        check = await is_subscribed(client, message)
+        check = await client.send_cached_media
         count += 1
         if check:
             return True
