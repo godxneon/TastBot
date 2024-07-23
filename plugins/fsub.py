@@ -3,6 +3,7 @@ from pyrogram import Client, enums
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from Script import script
+from utils import check_loop_sub
 from database.join_reqs import JoinReqs
 from info import REQ_CHANNEL, AUTH_CHANNEL, JOIN_REQS_DB, ADMINS
 
@@ -122,6 +123,11 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=enums.ParseMode.MARKDOWN,
             )
+            check = await check_loop_sub(bot, update)
+            if check:
+                await sh.delete()                
+            else:
+                return False
         return False
 
     except FloodWait as e:
