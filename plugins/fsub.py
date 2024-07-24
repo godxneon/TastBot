@@ -111,16 +111,17 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             buttons.pop()
 
         if not is_cb:
-            sh = await update.reply(
+            hh = await update.reply(
                 text=text,
                 quote=True,
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=enums.ParseMode.MARKDOWN,
+                parse_mode=enums.ParseMode.DEFAULT,
+                disable_web_page_preview=True
             )
             check = await check_loop_sub(bot, update)
             if check:
                 await send_file(bot, update, mode, file_id)
-                await sh.delete()                
+                await hh.delete()                
             else:
                 return False
         return False
