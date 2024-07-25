@@ -163,7 +163,6 @@ async def send_file(client, query, ident, file_id):
         chat_id=query.from_user.id,
         file_id=file_id,
         caption=f_caption,    
-        protect_content=True if pre == 'filep' else False,
         reply_markup=InlineKeyboardMarkup(
                 [
                  [
@@ -172,7 +171,7 @@ async def send_file(client, query, ident, file_id):
                 ]
             )
         ) 
-        k = await msg.reply("<b>ㅤㅤㅤ❗️❗️<u>IMPORTANT❗️️❗️</u>\n\nThis File Will Be Deleted From Here Within <u>10 Minute</u>. Please Forward This File To Your Saved Messages And Start Download There.</b>",quote=True)
+        k = await msg.reply("<b>ㅤㅤ❗️❗️<u>IMPORTANT❗️️❗️</u>\n\nThis File Will Be Deleted From Here Within <u>10 Minute</u>. Please Forward This File To Your Saved Messages And Start Download There.</b>")
         await asyncio.sleep(60)
         await msg.delete()
         await k.delete()    
