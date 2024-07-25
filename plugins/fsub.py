@@ -158,7 +158,7 @@ async def send_file(client, query, ident, file_id):
             f_caption = f_caption
     if f_caption is None:
         f_caption = f"@Team_KL ~ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))}"
-    ok = await client.send_cached_media(
+    msg = await client.send_cached_media(
         chat_id=query.from_user.id,
         file_id=file_id,
         caption=f_caption,        
@@ -170,8 +170,8 @@ async def send_file(client, query, ident, file_id):
                 ]
             )
         ) 
-        k = await msg.reply("<b>ㅤㅤㅤㅤ❗️❗️<u>IMPORTANT❗️️❗️</u>\n\nThis File Will Be Deleted From Here Within <u>10 Minute</u>. Please Forward This File To Your Saved Messages And Start Download There.</b>",quote=True)
+        k = await msg.reply("<b>ㅤㅤㅤ❗️❗️<u>IMPORTANT❗️️❗️</u>\n\nThis File Will Be Deleted From Here Within <u>10 Minute</u>. Please Forward This File To Your Saved Messages And Start Download There.</b>",quote=True)
         await asyncio.sleep(60)
-        await ok.delete()
+        await msg.delete()
         await k.delete()        
    
