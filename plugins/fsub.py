@@ -114,7 +114,8 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             check = await check_loop_sub(bot, update)
             if check:
                 await send_file(bot, update, mode, file_id)
-                await sh.delete()                
+                await sh.delete()   
+                await message.delete()
             else:
                 return False
         return False
@@ -158,7 +159,7 @@ async def send_file(client, query, ident, file_id):
             f_caption = f_caption
     if f_caption is None:
         f_caption = f"@Team_KL ~ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))}"
-    k = await client.send_cached_media(
+    msg = await client.send_cached_media(
         chat_id=query.from_user.id,
         file_id=file_id,
         caption=f_caption,        
@@ -172,5 +173,8 @@ async def send_file(client, query, ident, file_id):
                         ]
                     )
     )
-    await asyncio.sleep(100)
+    k = await msg.reply("<b>ㅤㅤ❗️❗️<u>IMPORTANT❗️️❗️</u>\n\nThis File Will Be Deleted From Here Within <u>10 Minute</u>. Please Forward This File To Your Saved Messages And Start Download There.</b>",quote=True)
+    await asyncio.sleep(30)
+    await msg.delete()
     await k.delete()
+    return
