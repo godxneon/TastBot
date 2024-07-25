@@ -92,7 +92,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
         else:
             return True
     except UserNotParticipant:
-        text=f"""<b>To Get The {update.from_user.mention} 🙋‍♂️ File, You Just Have To Do One Thing, Click On The Below « 𝖩𝖮𝖨𝖭 𝖴𝖯𝖣𝖠𝖳𝖤 𝖢𝖧𝖠𝖭𝖭𝖤𝖫 » Button And Then Click On «𝖱𝖾𝗊𝗎𝖾𝗌𝗍 𝖳𝗈 𝖩𝗈𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅» And Then You Will Get The File..</b>"""
+        text=f"""<b>To Get The {update.from_user.mention} 🙋‍♂️ File, You Just Have To Do One Thing, Click On The Below « 𝖩𝖮𝖨𝖭 𝖴𝖯𝖣𝖠𝖳𝖤 𝖢𝖧𝖠𝖭𝖭𝖤𝖫 » Button And Then Click On « 𝖱𝖾𝗊𝗎𝖾𝗌𝗍 𝖳𝗈 𝖩𝗈𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅 » And Then You Will Get The File..</b>"""
 
         buttons = [
             [
@@ -145,8 +145,8 @@ async def send_file(client, query, ident, file_id):
         await query.reply("please Try again, I haved added your id to forse sub id list")
         return
     files = files_[0]
-    title = files.file_name
-    size = get_size(files.file_size)
+    title = '@Team_KL ~ ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))
+    size=get_size(files.file_size)
     f_caption = files.file_name
     if CUSTOM_FILE_CAPTION:
         try:
@@ -157,19 +157,21 @@ async def send_file(client, query, ident, file_id):
             logger.exception(e)
             f_caption = f_caption
     if f_caption is None:
-        f_caption = f"{title}"
+        f_caption = f"@Team_KL ~ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))}"
     ok = await client.send_cached_media(
         chat_id=query.from_user.id,
         file_id=file_id,
         caption=f_caption,        
         reply_markup=InlineKeyboardMarkup(
-                          [
-                            [                            
-                            InlineKeyboardButton('🖥 𝗡𝗘𝗪 𝗢𝗧𝗧 𝗨𝗣𝗗𝗔𝗧𝗘𝗦 🖥', url=f'https://t.me/OTT_ARAKAL_THERAVAD_MOVIESS')
-                          ],[     
-                            InlineKeyboardButton('⭕️ 𝗚𝗘𝗧 𝗢𝗨𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 𝗟𝗜𝗡𝗞𝗦 ⭕️', url="https://t.me/ARAKAL_THERAVAD_GROUP_LINKS"),
-                           ]
-                        ]
-                    )
-    )
+                [
+                 [
+                  InlineKeyboardButton("♽ Mᴏᴠɪᴇ Rᴇᴏ̨ᴜᴇsᴛ Gʀᴏᴜᴘ ♽", url="https://t.me/+qVNagMyIxis1MjM9")
+                 ]
+                ]
+            )
+        ) 
+        k = await msg.reply("<b>ㅤㅤㅤㅤ❗️❗️<u>IMPORTANT❗️️❗️</u>\n\nThis File Will Be Deleted From Here Within <u>10 Minute</u>. Please Forward This File To Your Saved Messages And Start Download There.</b>",quote=True)
+        await asyncio.sleep(60)
+        await ok.delete()
+        await k.delete()        
    
