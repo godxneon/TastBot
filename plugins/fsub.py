@@ -97,7 +97,10 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
         buttons = [
             [
                 InlineKeyboardButton("« 𝖩𝖮𝖨𝖭 𝖴𝖯𝖣𝖠𝖳𝖤 𝖢𝖧𝖠𝖭𝖭𝖤𝖫 »", url=invite_link)
-            ]
+            ],
+            [
+                InlineKeyboardButton(" 🔄 Tʀʏ Aɢᴀɪɴ 🔄 ", callback_data=f"{mode}#{file_id}")
+            ],     
         ]
 
         if file_id is False:
@@ -113,9 +116,8 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             )
             check = await check_loop_sub(bot, update)
             if check:
-                await send_file(bot, update, mode, file_id)
                 await sh.delete()   
-                await message.delete()
+                await update.delete()
             else:
                 return False
         return False
