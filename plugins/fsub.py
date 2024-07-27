@@ -173,7 +173,7 @@ async def send_file(client, query, ident, file_id):
                         ]
                     )
     )
-k = await msg.reply("<b>ㅤㅤㅤ❗️❗️<u>IMPORTANT</u>❗️️❗️\n\nThis File / Video Will Be Deleted From Here Within <u>15 Minute</u>. Please Forward This File / Video To Your Saved Messages And Start Downloading There.</b>",quote=True)
+    k = await msg.reply("<b>ㅤㅤㅤ❗️❗️<u>IMPORTANT</u>❗️️❗️\n\nThis File / Video Will Be Deleted From Here Within <u>15 Minute</u>. Please Forward This File / Video To Your Saved Messages And Start Downloading There.</b>",quote=True)
     await asyncio.sleep(90)
     await msg.delete()
     await k.delete()
