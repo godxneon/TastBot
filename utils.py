@@ -4,7 +4,7 @@ from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, ADMINS, REQ_
 from database.join_reqs import JoinReqs as db2
 from imdb import Cinemagoer
 import asyncio
-from pyrogram.types import Message, InlineKeyboardButton, CallbackQuery
+from pyrogram.types import Message, InlineKeyboardButton
 from pyrogram import enums
 from typing import Union
 import re
@@ -42,12 +42,12 @@ class temp(object):
     B_LINK = None
     SETTINGS = {}
 
-async def check_loop_sub(client, message, query: CallbackQuery):
+async def check_loop_sub(client, message):
     count = 0
     while True:
         if count == 15:
             return False
-        check = elif query.data.startswith("checksub")
+        check = await get_file_details(file_id)
         count += 1
         if check:
             return True
