@@ -47,7 +47,7 @@ async def check_loop_sub(client, message):
     while True:
         if count == 15:
             return False
-        check = callback_data=f"{mode}#{file_id}")
+        check = await ForceSub(client, message, file_id=file_id, mode=pre)
         count += 1
         if check:
             return True
