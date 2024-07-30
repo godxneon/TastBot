@@ -53,7 +53,7 @@ async def check_loop_sub(client, message):
             return True
         else:
             pass
-        await asyncio.sleep
+        await asyncio.sleep()
 
 async def is_subscribed(bot, query):
     
