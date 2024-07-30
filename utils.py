@@ -51,9 +51,6 @@ async def check_loop_sub(client, message):
         count += 1
         if check:
             return True
-        else:
-            pass
-        await delete()
 
 async def is_subscribed(bot, query):
     
