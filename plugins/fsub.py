@@ -96,13 +96,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
 
         buttons = [
             [
-                InlineKeyboardButton("🔮 Rᴇǫᴜᴇsᴛ Tᴏ Jᴏɪɴ Cʜᴀɴɴᴇʟ 🔮", url=invite_link)
-            ],
-            [
-                InlineKeyboardButton(" 🔄 Tʀʏ Aɢᴀɪɴ 🔄 ", callback_data=f"{mode}#{file_id}")
-            ],
-            [
-               InlineKeyboardButton("🤷 Hᴇʏ Bᴏᴛ....! Wʜʏ I'ᴍ Jᴏɪɴɪɴɢ 🤷", callback_data='whyjoin')
+                InlineKeyboardButton("« 𝖩𝖮𝖨𝖭 MOVIES 𝖢𝖧𝖠𝖭𝖭𝖤𝖫 »", url=invite_link)
             ]
         ]
 
@@ -110,12 +104,20 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             buttons.pop()
 
         if not is_cb:
-            await update.reply(
+            sh = await update.reply(
                 text=text,
                 quote=True,
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=enums.ParseMode.MARKDOWN,
+                parse_mode=enums.ParseMode.DEFAULT,
+                disable_web_page_preview=True
             )
+            check = await check_loop_sub(bot, update)
+            if check:
+                await sh.delete()  
+                await update.delete()
+                await send_file(bot, update, mode, file_id)                
+            else:
+                return False
         return False
 
     except FloodWait as e:
