@@ -11,6 +11,7 @@ psutil==5.9.4
 aiofiles
 aiohttp==3.7.4
 datetime
+fuzzywuzzy
 pytz
 aiohttp
 python-math
