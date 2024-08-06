@@ -1068,11 +1068,11 @@ async def auto_filter(client, msg, spoll=False):
         cap = f"<b>❐ Here is What I Found In My Database For Your Query : <u>{search}</u></b>"
     if imdb and imdb.get('poster'):
         try:
-            send=await message.reply_photo(photo="https://telegra.ph/file/60d2e897bfdf063f81545.jpg", caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+            send=await message.reply_photo(photo="https://telegra.ph/file/0f0c85c2acf4f35eb4ca8.jpg", caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
-            send=await message.reply_photo(photo="https://telegra.ph/file/60d2e897bfdf063f81545.jpg", caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+            send=await message.reply_photo(photo="https://telegra.ph/file/0f0c85c2acf4f35eb4ca8.jpg", caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
             send=await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
